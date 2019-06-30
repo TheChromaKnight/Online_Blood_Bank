@@ -1,0 +1,42 @@
+H:\Programming\School\C#\Online Blood Bank\Online Blood Bank\bin\Debug\Online Blood Bank.exe.config
+H:\Programming\School\C#\Online Blood Bank\Online Blood Bank\bin\Debug\Online Blood Bank.exe
+H:\Programming\School\C#\Online Blood Bank\Online Blood Bank\bin\Debug\Online Blood Bank.pdb
+H:\Programming\School\C#\Online Blood Bank\Online Blood Bank\obj\Debug\Online Blood Bank.csprojResolveAssemblyReference.cache
+H:\Programming\School\C#\Online Blood Bank\Online Blood Bank\obj\Debug\App.g.cs
+H:\Programming\School\C#\Online Blood Bank\Online Blood Bank\obj\Debug\Online Blood Bank_MarkupCompile.cache
+H:\Programming\School\C#\Online Blood Bank\Online Blood Bank\obj\Debug\Online Blood Bank_MarkupCompile.lref
+H:\Programming\School\C#\Online Blood Bank\Online Blood Bank\obj\Debug\Online Blood Bank.g.resources
+H:\Programming\School\C#\Online Blood Bank\Online Blood Bank\obj\Debug\Online_Blood_Bank.Properties.Resources.resources
+H:\Programming\School\C#\Online Blood Bank\Online Blood Bank\obj\Debug\Online Blood Bank.csproj.GenerateResource.Cache
+H:\Programming\School\C#\Online Blood Bank\Online Blood Bank\obj\Debug\Online Blood Bank.csproj.CoreCompileInputs.cache
+H:\Programming\School\C#\Online Blood Bank\Online Blood Bank\obj\Debug\Online Blood Bank.exe
+H:\Programming\School\C#\Online Blood Bank\Online Blood Bank\obj\Debug\Online Blood Bank.pdb
+H:\Programming\School\C#\Online Blood Bank\Online Blood Bank\obj\Debug\UpdateWin.g.cs
+H:\Programming\School\C#\Online Blood Bank\Online Blood Bank\obj\Debug\UpdateWin.baml
+H:\Programming\School\C#\Online Blood Bank\Online Blood Bank\bin\Debug\MySql.Data.dll
+H:\Programming\School\C#\Online Blood Bank\Online Blood Bank\bin\Debug\Google.Protobuf.dll
+H:\Programming\School\C#\Online Blood Bank\Online Blood Bank\bin\Debug\BouncyCastle.Crypto.dll
+H:\Programming\School\C#\Online Blood Bank\Online Blood Bank\bin\Debug\MySql.Data.xml
+H:\Programming\School\C#\Online Blood Bank\Online Blood Bank\obj\Debug\LoginWin.g.cs
+H:\Programming\School\C#\Online Blood Bank\Online Blood Bank\obj\Debug\LoginWin.baml
+h:\Software_development\Online_Blood_Bank\Online_Blood_Bank\Online Blood Bank\bin\Debug\Online Blood Bank.exe.config
+h:\Software_development\Online_Blood_Bank\Online_Blood_Bank\Online Blood Bank\bin\Debug\Online Blood Bank.exe
+h:\Software_development\Online_Blood_Bank\Online_Blood_Bank\Online Blood Bank\bin\Debug\Online Blood Bank.pdb
+h:\Software_development\Online_Blood_Bank\Online_Blood_Bank\Online Blood Bank\bin\Debug\MySql.Data.dll
+h:\Software_development\Online_Blood_Bank\Online_Blood_Bank\Online Blood Bank\bin\Debug\Google.Protobuf.dll
+h:\Software_development\Online_Blood_Bank\Online_Blood_Bank\Online Blood Bank\bin\Debug\BouncyCastle.Crypto.dll
+h:\Software_development\Online_Blood_Bank\Online_Blood_Bank\Online Blood Bank\bin\Debug\MySql.Data.xml
+h:\Software_development\Online_Blood_Bank\Online_Blood_Bank\Online Blood Bank\obj\Debug\Online Blood Bank.csprojResolveAssemblyReference.cache
+h:\Software_development\Online_Blood_Bank\Online_Blood_Bank\Online Blood Bank\obj\Debug\LoginWin.g.cs
+h:\Software_development\Online_Blood_Bank\Online_Blood_Bank\Online Blood Bank\obj\Debug\UpdateWin.g.cs
+h:\Software_development\Online_Blood_Bank\Online_Blood_Bank\Online Blood Bank\obj\Debug\App.g.cs
+h:\Software_development\Online_Blood_Bank\Online_Blood_Bank\Online Blood Bank\obj\Debug\Online Blood Bank_MarkupCompile.cache
+h:\Software_development\Online_Blood_Bank\Online_Blood_Bank\Online Blood Bank\obj\Debug\Online Blood Bank_MarkupCompile.lref
+h:\Software_development\Online_Blood_Bank\Online_Blood_Bank\Online Blood Bank\obj\Debug\LoginWin.baml
+h:\Software_development\Online_Blood_Bank\Online_Blood_Bank\Online Blood Bank\obj\Debug\UpdateWin.baml
+h:\Software_development\Online_Blood_Bank\Online_Blood_Bank\Online Blood Bank\obj\Debug\Online Blood Bank.g.resources
+h:\Software_development\Online_Blood_Bank\Online_Blood_Bank\Online Blood Bank\obj\Debug\Online_Blood_Bank.Properties.Resources.resources
+h:\Software_development\Online_Blood_Bank\Online_Blood_Bank\Online Blood Bank\obj\Debug\Online Blood Bank.csproj.GenerateResource.Cache
+h:\Software_development\Online_Blood_Bank\Online_Blood_Bank\Online Blood Bank\obj\Debug\Online Blood Bank.csproj.CoreCompileInputs.cache
+h:\Software_development\Online_Blood_Bank\Online_Blood_Bank\Online Blood Bank\obj\Debug\Online Blood Bank.exe
+h:\Software_development\Online_Blood_Bank\Online_Blood_Bank\Online Blood Bank\obj\Debug\Online Blood Bank.pdb
