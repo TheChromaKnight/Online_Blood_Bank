@@ -28,11 +28,24 @@ namespace ErrorMessages
         }
         public static void SuccessfulLogin()
         {
-            MessageBox.Show("Succesful Login");
+            MessageBox.Show("Succesful Login!");
         }
         public static void ConnectionError()
         {
             MessageBox.Show("A connection problem has occured. Please contact an admin!");
         }
+        public static void SomethingWentWrong()
+        {
+            MessageBox.Show("Something Went Wrong!");
+        }
+        public static void WelcomeBack(int days)
+        {
+            MessageBox.Show("Welcome back! " + days + " days have passed since your last login. ");
+        }
+        public static void FirstLogin()
+        {
+            MessageBox.Show("Hello! We see that this is your first login, we would like to thank you for donating your blood. Click ok to receive our thanks :)");
+        }
+
     }
 }

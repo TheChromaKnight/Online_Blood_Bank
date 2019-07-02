@@ -22,7 +22,7 @@ namespace Online_Blood_Bank
     /// </summary>
     public partial class LoginWin : Window
     {
-        Functions db = new Functions();
+        Functions Db = new Functions();
         
         public LoginWin()
         {
@@ -36,78 +36,117 @@ namespace Online_Blood_Bank
         {
             string Name;
             string Password;
-            int errors = 0;
+            int Errors = 0;
+
+            int FirstLogin = 0;
+            int DatabaseError = -1;
 
             int UserId;
+            
 
     
-            if(errors == 0)
+            if(Errors == 0)
             { 
                if (PwdLogin.Password.Length > 16)
                {
                    Messages.InvalidPasswordForm();
-                    errors = 1;
+                    Errors = 1;
                }
             }
-            if(errors == 0)
+            if(Errors == 0)
             {
                if (TbUsername.Text.Length > 30)
                {
                    Messages.InvalidUserNameForm();
-                    errors = 1;
+                    Errors = 1;
                }
             }
-            if(errors ==0)
+            if(Errors ==0)
             {
                 //We cut out the extra white space characters with Trim()
                 Name = TbUsername.Text.Trim();
                 Password = PwdLogin.Password.Trim();
+               
                 
 
                 if (Password != "" && Name != "")
                 {
                     //Admin
-                    if (db.Login(Name, Password) == 1)
+                    if (Db.Login(Name, Password) == 1)
                     {
-                        UserId = db.ReturnUserId();
-                        Messages.SuccessfulLogin();
-                        this.Close();
+                        UserId = Db.ReturnUserId();
+                        
 
+                        Messages.SuccessfulLogin();
 
                         //We have to create the new window here, otherwise it will not close itself upon closing this window
                         UpdateWin upwin = new UpdateWin();
-                        //upwin.Show();
-                        MessageBox.Show(""+ UserId);
+                        upwin.Show();
+                        this.Close();
 
-                        
+
+                        if(Db.LastLoginCalculator(UserId)==DatabaseError)
+                        {
+                            Messages.SomethingWentWrong();
+                        }
+                        else
+                        {
+                            Messages.WelcomeBack(Db.LastLoginCalculator(UserId));
+                            Db.UpdateLastLogin(UserId);
+                        }
+                       
+
                     }
                     
                     //Receptionist
-                    else if(db.Login(Name, Password) == 2)
+                    else if(Db.Login(Name, Password) == 2)
                     {
-                        UserId = db.ReturnUserId();
+                        UserId = Db.ReturnUserId();
                         Messages.SuccessfulLogin();
+                        UpdateWin upwin = new UpdateWin();
+                        upwin.Show();
                         this.Close();
 
-                        UpdateWin upwin = new UpdateWin();
+                        if (Db.LastLoginCalculator(UserId) == DatabaseError)
+                        {
+                            Messages.SomethingWentWrong();
+                        }
+                        else
+                        {
+                            Messages.WelcomeBack(Db.LastLoginCalculator(UserId));
+                            Db.UpdateLastLogin(UserId);
+                        }
+
 
                     }
                     //Member
-                    else if(db.Login(Name, Password) == 3)
+                    else if(Db.Login(Name, Password) == 3)
                     {
-                        UserId = db.ReturnUserId();
+                        UserId = Db.ReturnUserId();
                         Messages.SuccessfulLogin();
+                        UpdateWin upwin = new UpdateWin();
+                        upwin.Show();
                         this.Close();
 
-                        UpdateWin upwin = new UpdateWin();
+                        if (Db.LastLoginCalculator(UserId) == DatabaseError)
+                        {
+                            Messages.SomethingWentWrong();
+                        }
+                        else
+                        {
+                            Messages.WelcomeBack(Db.LastLoginCalculator(UserId));
+                            Db.UpdateLastLogin(UserId);
+                        }
+
+
                     }
                     //No user found
-                    else if(db.Login(Name, Password) == 0)
+                    else if(Db.Login(Name, Password) == 0)
                     {
                         Messages.WrongPasswordOrName();
                     }
                     //Connection error
-                    else if(db.Login(Name,Password) == 0)
+                    else if(Db.Login(Name,Password) == 0)
                     {
                         Messages.ConnectionError();
 
