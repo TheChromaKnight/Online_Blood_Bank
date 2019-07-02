@@ -38,6 +38,8 @@ namespace Online_Blood_Bank
             string Password;
             int errors = 0;
 
+            int UserId;
+
     
             if(errors == 0)
             { 
@@ -60,22 +62,55 @@ namespace Online_Blood_Bank
                 //We cut out the extra white space characters with Trim()
                 Name = TbUsername.Text.Trim();
                 Password = PwdLogin.Password.Trim();
+                
 
                 if (Password != "" && Name != "")
                 {
-                    if (db.Login(Name, Password) == true)
+                    //Admin
+                    if (db.Login(Name, Password) == 1)
                     {
+                        UserId = db.ReturnUserId();
                         Messages.SuccessfulLogin();
                         this.Close();
 
 
                         //We have to create the new window here, otherwise it will not close itself upon closing this window
                         UpdateWin upwin = new UpdateWin();
-                        upwin.Close();
+                        //upwin.Show();
+                        MessageBox.Show(""+ UserId);
+
+                        
                     }
-                    else if(db.Login(Name, Password) == false)
+                    
+                    //Receptionist
+                    else if(db.Login(Name, Password) == 2)
+                    {
+                        UserId = db.ReturnUserId();
+                        Messages.SuccessfulLogin();
+                        this.Close();
+
+                        UpdateWin upwin = new UpdateWin();
+
+                    }
+                    //Member
+                    else if(db.Login(Name, Password) == 3)
+                    {
+                        UserId = db.ReturnUserId();
+                        Messages.SuccessfulLogin();
+                        this.Close();
+
+                        UpdateWin upwin = new UpdateWin();
+                    }
+                    //No user found
+                    else if(db.Login(Name, Password) == 0)
                     {
                         Messages.WrongPasswordOrName();
+                    }
+                    //Connection error
+                    else if(db.Login(Name,Password) == 0)
+                    {
+                        Messages.ConnectionError();
+
                     }
                     
                 }

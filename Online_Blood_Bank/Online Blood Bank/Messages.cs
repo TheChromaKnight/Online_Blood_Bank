@@ -30,5 +30,9 @@ namespace ErrorMessages
         {
             MessageBox.Show("Succesful Login");
         }
+        public static void ConnectionError()
+        {
+            MessageBox.Show("A connection problem has occured. Please contact an admin!");
+        }
     }
 }

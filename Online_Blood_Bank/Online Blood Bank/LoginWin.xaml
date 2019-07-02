@@ -35,7 +35,7 @@
 
             </Grid>
             <!-- Buttons-->
-            <Grid>
+            <Grid RenderTransformOrigin="0.5,0.5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="2*"/>
@@ -43,7 +43,7 @@
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button Name="BtnLogin" Content="Login" Grid.Column="2" Padding="4" Background="#FFE2E2E2" Click="BtnLogin_Click"/>
+                <Button Name="BtnLogin" Content="Login" Grid.Column="2" Padding="4" Background="#FFE9F196" Click="BtnLogin_Click" Cursor="Arrow" RenderTransformOrigin="0.5,0.5" BorderBrush="#FF6A1B1B" Foreground="#FF0A0A0A"/>
             </Grid>
 
         </StackPanel>
