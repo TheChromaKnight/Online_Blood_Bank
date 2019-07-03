@@ -23,7 +23,10 @@ namespace Online_Blood_Bank
     public partial class LoginWin : Window
     {
         Functions Db = new Functions();
-        
+        public int UserId;
+       
+
+       
         public LoginWin()
         {
             InitializeComponent();
@@ -36,16 +39,16 @@ namespace Online_Blood_Bank
         {
             string Name;
             string Password;
+
+            //Error variable to stop the program from progressing forward until every data is correct
+           
             int Errors = 0;
 
-            int FirstLogin = 0;
+            
             int DatabaseError = -1;
 
-            int UserId;
-            
-
-    
-            if(Errors == 0)
+            //Password can't be longer than 16 chars,
+            if (Errors == 0)
             { 
                if (PwdLogin.Password.Length > 16)
                {
@@ -53,7 +56,8 @@ namespace Online_Blood_Bank
                     Errors = 1;
                }
             }
-            if(Errors == 0)
+            // username can't be longer than 30 chars
+            if (Errors == 0)
             {
                if (TbUsername.Text.Length > 30)
                {
@@ -74,16 +78,14 @@ namespace Online_Blood_Bank
                     //Admin
                     if (Db.Login(Name, Password) == 1)
                     {
-                        UserId = Db.ReturnUserId();
                         
-
+                        
+                        UserId = Db.ReturnUserId();
                         Messages.SuccessfulLogin();
 
                         //We have to create the new window here, otherwise it will not close itself upon closing this window
-                        UpdateWin upwin = new UpdateWin();
-                        upwin.Show();
+                       
                         this.Close();
-
 
                         if(Db.LastLoginCalculator(UserId)==DatabaseError)
                         {
@@ -101,10 +103,13 @@ namespace Online_Blood_Bank
                     //Receptionist
                     else if(Db.Login(Name, Password) == 2)
                     {
+                       
                         UserId = Db.ReturnUserId();
+                       
                         Messages.SuccessfulLogin();
-                        UpdateWin upwin = new UpdateWin();
-                        upwin.Show();
+                        Index indexwin = new Index(UserId);
+                        indexwin.Show();
+
                         this.Close();
 
                         if (Db.LastLoginCalculator(UserId) == DatabaseError)
@@ -123,9 +128,9 @@ namespace Online_Blood_Bank
                     else if(Db.Login(Name, Password) == 3)
                     {
                         UserId = Db.ReturnUserId();
+                       
                         Messages.SuccessfulLogin();
-                        UpdateWin upwin = new UpdateWin();
-                        upwin.Show();
+
                         this.Close();
 
                         if (Db.LastLoginCalculator(UserId) == DatabaseError)
@@ -137,8 +142,6 @@ namespace Online_Blood_Bank
                             Messages.WelcomeBack(Db.LastLoginCalculator(UserId));
                             Db.UpdateLastLogin(UserId);
                         }
-
-
                     }
                     //No user found
                     else if(Db.Login(Name, Password) == 0)
@@ -157,8 +160,9 @@ namespace Online_Blood_Bank
                     Messages.EmptyFields();
  
             }
-         
             
         }
+
+       
     }
 }

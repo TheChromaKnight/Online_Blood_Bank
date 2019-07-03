@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Online_Blood_Bank"
         mc:Ignorable="d"
-        Title="Update" Height="300" Width="300" WindowStartupLocation="CenterScreen">
+        Title="Update" Height="300" Width="300" WindowStartupLocation="CenterScreen" MinWidth="300" MinHeight="300">
     <Border Padding="10">
         <StackPanel>
 

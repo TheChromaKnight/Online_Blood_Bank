@@ -56,10 +56,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Database.cs" />
+    <Compile Include="Index.xaml.cs">
+      <DependentUpon>Index.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Messages.cs" />
     <Compile Include="UpdateWin.xaml.cs">
       <DependentUpon>UpdateWin.xaml</DependentUpon>
     </Compile>
+    <Page Include="Index.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginWin.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -102,6 +109,60 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\blood_bank_logo.png" />
+    <Resource Include="Images\cross_platform.png" />
+    <Resource Include="Images\github_logo.png" />
+    <Resource Include="Images\home.png" />
+    <Resource Include="Images\info.png" />
+    <Resource Include="Images\red_crescent.png" />
+    <Resource Include="Images\red_cross.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\menu_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\users.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\new_user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\expand_fullscreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images - Copy\blood_bank_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images - Copy\cross_platform.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images - Copy\expand_fullscreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images - Copy\github_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images - Copy\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images - Copy\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images - Copy\menu_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images - Copy\new_user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images - Copy\red_crescent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images - Copy\red_cross.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images - Copy\users.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

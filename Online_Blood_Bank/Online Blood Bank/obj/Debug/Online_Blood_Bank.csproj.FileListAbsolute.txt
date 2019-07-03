@@ -19,3 +19,5 @@ h:\Software_development\Blood_Bank\Online_Blood_Bank\Online Blood Bank\obj\Debug
 h:\Software_development\Blood_Bank\Online_Blood_Bank\Online Blood Bank\obj\Debug\Online_Blood_Bank.csproj.CoreCompileInputs.cache
 h:\Software_development\Blood_Bank\Online_Blood_Bank\Online Blood Bank\obj\Debug\Online Blood Bank.exe
 h:\Software_development\Blood_Bank\Online_Blood_Bank\Online Blood Bank\obj\Debug\Online Blood Bank.pdb
+H:\Software_development\Blood_Bank\Online_Blood_Bank\Online Blood Bank\obj\Debug\Index.g.cs
+H:\Software_development\Blood_Bank\Online_Blood_Bank\Online Blood Bank\obj\Debug\Index.baml

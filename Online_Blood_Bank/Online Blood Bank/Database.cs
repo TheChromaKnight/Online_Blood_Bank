@@ -76,14 +76,8 @@ namespace DatabaseMethods
                 Dt = new DataTable();
                 Adapter = new MySqlDataAdapter(Sql, SqlConn);
                 Adapter.Fill(Dt);
-
-
-                //We store the data, then convert it into int and it is now stored in the public member
-               
+                
               
-               
-               
-
                 //We need to check if the dataTable actually has rows
                 if (Dt.Rows.Count > 0)
                 {
@@ -165,7 +159,7 @@ namespace DatabaseMethods
                     
       
             }
-            catch(Exception e)
+            catch(Exception E)
             {
                 return Error;
             }
@@ -176,6 +170,7 @@ namespace DatabaseMethods
         
         }
 
+        //When the user logs in successfully, we update 
         public void UpdateLastLogin(int UniqueUserId)
         {
             try
@@ -197,6 +192,84 @@ namespace DatabaseMethods
                 CloseConnection();
             }
         }
+
+        //A function that returns the username
+        public string GetUserName(int UniqueUserId)
+        {
+            string Result;
+            string Error = "error";
+            
+
+            try
+            {
+                
+                OpenConnection();
+
+                string Sql = "SELECT user_name FROM user WHERE user_id = " + UniqueUserId + " ";
+                Adapter = new MySqlDataAdapter(Sql, SqlConn);
+                Dt = new DataTable();
+                Adapter.Fill(Dt);
+
+                if (Dt.Rows.Count > 0)
+                {
+                    Result = Dt.Rows[0][0].ToString();
+
+                    return Result;
+                }
+                else
+                    return Error;
+                    
+                    
+
+            }
+            catch(Exception e)
+            {
+                string Exception = e.GetType().ToString();
+                return Exception+ " "+ e.Message;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        //User rank function which returns the user rank NAME
+        public string GetUserRank(int UniqueUserId)
+        {
+            string Result;
+            string Error = "error";
+            
+            try
+            {
+
+                OpenConnection();
+
+                string Sql = "SELECT rank_name FROM rank INNER JOIN user ON user_rank_id = rank_id WHERE user_id = " + UniqueUserId + " ";  
+                Adapter = new MySqlDataAdapter(Sql, SqlConn);
+                Dt = new DataTable();
+                Adapter.Fill(Dt);
+
+                if (Dt.Rows.Count > 0)
+                {
+                    Result = Dt.Rows[0][0].ToString();
+
+                    return Result;
+                }
+                else
+                    return Error;
+                
+            }
+            catch (Exception e)
+            {
+                string Exception = e.GetType().ToString();
+                return Exception + " " + e.Message;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
     }
 
 

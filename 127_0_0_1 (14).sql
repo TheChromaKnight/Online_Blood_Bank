@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2019. Jún 30. 21:09
+-- Létrehozás ideje: 2019. Júl 03. 18:57
 -- Kiszolgáló verziója: 10.1.34-MariaDB
 -- PHP verzió: 7.2.7
 
@@ -53,6 +53,7 @@ INSERT INTO `blood_condition` (`blood_health_id`, `blood_health_type`) VALUES
 CREATE TABLE `blood_donation` (
   `blood_donation_id` int(5) NOT NULL,
   `blood_donation_date` date NOT NULL,
+  `blood_donation_office_id` int(4) NOT NULL,
   `blood_donation_member_id` int(5) NOT NULL,
   `blood_donation_blood` double NOT NULL COMMENT 'Hct',
   `blood_donation_plasma` double NOT NULL COMMENT 'Hct',
@@ -101,6 +102,18 @@ CREATE TABLE `member` (
 -- --------------------------------------------------------
 
 --
+-- Tábla szerkezet ehhez a táblához `office`
+--
+
+CREATE TABLE `office` (
+  `office_id` int(4) NOT NULL,
+  `office_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `office_address` varchar(200) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Tábla szerkezet ehhez a táblához `rank`
 --
 
@@ -114,9 +127,9 @@ CREATE TABLE `rank` (
 --
 
 INSERT INTO `rank` (`rank_id`, `rank_name`) VALUES
-(0, 'admin'),
-(1, 'receptionist'),
-(2, 'member');
+(1, 'admin'),
+(2, 'receptionist'),
+(3, 'member');
 
 -- --------------------------------------------------------
 
@@ -129,7 +142,7 @@ CREATE TABLE `user` (
   `user_name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `user_password` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
   `user_rank_id` int(1) NOT NULL,
-  `user_last_login` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `user_last_login` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -137,9 +150,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_name`, `user_password`, `user_rank_id`, `user_last_login`) VALUES
-(1, 'teszt', 'teszt', 0, '2019-06-30 18:32:34'),
-(2, 'user1', 'user1', 0, '2019-06-30 18:56:11'),
-(3, 'user2', 'user2', 1, '2019-06-30 18:56:25');
+(4, 'admin', 'admin123', 1, '2019-06-03'),
+(5, 'jozska', 'jozska123', 2, '2019-07-03'),
+(7, 'okok', 'okok123', 3, '2019-05-20');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -157,7 +170,8 @@ ALTER TABLE `blood_condition`
 ALTER TABLE `blood_donation`
   ADD KEY `blood_donation_member_id` (`blood_donation_member_id`),
   ADD KEY `blood_donation_blood_health_id` (`blood_donation_blood_condition`),
-  ADD KEY `blood_donation_blood_type_id` (`blood_donation_blood_type_id`);
+  ADD KEY `blood_donation_blood_type_id` (`blood_donation_blood_type_id`),
+  ADD KEY `blood_donation_place_id` (`blood_donation_office_id`);
 
 --
 -- A tábla indexei `blood_type`
@@ -173,6 +187,12 @@ ALTER TABLE `member`
   ADD PRIMARY KEY (`member_id`),
   ADD KEY `acceptor_user_id` (`member_user_id`),
   ADD KEY `member_blood_type_id` (`member_blood_type_id`);
+
+--
+-- A tábla indexei `office`
+--
+ALTER TABLE `office`
+  ADD PRIMARY KEY (`office_id`);
 
 --
 -- A tábla indexei `rank`
@@ -211,16 +231,22 @@ ALTER TABLE `member`
   MODIFY `member_id` int(5) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT a táblához `office`
+--
+ALTER TABLE `office`
+  MODIFY `office_id` int(4) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT a táblához `rank`
 --
 ALTER TABLE `rank`
-  MODIFY `rank_id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `rank_id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT a táblához `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Megkötések a kiírt táblákhoz
@@ -232,7 +258,8 @@ ALTER TABLE `user`
 ALTER TABLE `blood_donation`
   ADD CONSTRAINT `blood_donation_ibfk_1` FOREIGN KEY (`blood_donation_blood_condition`) REFERENCES `blood_condition` (`blood_health_id`),
   ADD CONSTRAINT `blood_donation_ibfk_2` FOREIGN KEY (`blood_donation_member_id`) REFERENCES `member` (`member_id`),
-  ADD CONSTRAINT `blood_donation_ibfk_3` FOREIGN KEY (`blood_donation_blood_type_id`) REFERENCES `blood_type` (`blood_type_id`);
+  ADD CONSTRAINT `blood_donation_ibfk_3` FOREIGN KEY (`blood_donation_blood_type_id`) REFERENCES `blood_type` (`blood_type_id`),
+  ADD CONSTRAINT `blood_donation_ibfk_4` FOREIGN KEY (`blood_donation_office_id`) REFERENCES `office` (`office_id`);
 
 --
 -- Megkötések a táblához `member`

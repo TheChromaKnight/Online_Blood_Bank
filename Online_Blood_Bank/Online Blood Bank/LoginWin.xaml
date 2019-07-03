@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Online_Blood_Bank"
         mc:Ignorable="d"
-        Title="Login" Height="250" Width="525" WindowStartupLocation="CenterScreen" Background="#FFF5DEDE">
-    <Border Padding="40">
+        Title="Login" Height="250" Width="525" WindowStartupLocation="CenterScreen" Background="#FFF5DEDE" MinWidth="525" MinHeight="250">
+    <Border Padding="40" BorderThickness="5" Background="#FFCEE3F6" BorderBrush="#FFCEE3F6">
         <StackPanel>
             <!-- Username-->
             <Grid>
@@ -43,7 +43,16 @@
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button Name="BtnLogin" Content="Login" Grid.Column="2" Padding="4" Background="#FFE9F196" Click="BtnLogin_Click" Cursor="Arrow" RenderTransformOrigin="0.5,0.5" BorderBrush="#FF6A1B1B" Foreground="#FF0A0A0A"/>
+                <Button Name="BtnLogin" Content="Login" Grid.Column="2" Padding="4" Background="#FFE9F196" Click="BtnLogin_Click" Cursor="Arrow" RenderTransformOrigin="0.5,0.5" BorderBrush="#FF6A1B1B" Foreground="#FF0A0A0A" Margin="0,1,0,-1" BorderThickness="5" FontSize="14" FontFamily="Segoe UI Black">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-0.347"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
             </Grid>
 
         </StackPanel>
