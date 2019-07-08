@@ -270,9 +270,117 @@ namespace DatabaseMethods
             }
         }
 
+        //Session start update in database (session table). In order to track user logins and their time in the system.
+        //As more people can use the software at the same time, we cannot use auto increment in database
+        //We need a function that returns the last session_id and we increment it by 1 every time
+        //If we have the last session_id, then we insert the id,session_start,user_id
+        //After we're done with this, we need to return the user_id, so that the SessionEnd function can be called
+        //We also need to give back the SessionId, because the GetLastSessionId Function only works for the insert  and
+        //(More users can use the system at the same time)
+        public void StartSession(int SessionId, int UniqueUserId)
+        {
+            
+            string ErrorMessage = "The error messages is: ";
+
+            string sql = "INSERT INTO session(session_id, session_start, session_user_id) VALUES ("+SessionId+", NOW(), "+UniqueUserId+" )";
+
+           try
+            {
+                OpenConnection();
+
+                SqlCmd = new MySqlCommand(sql, SqlConn);
+
+                SqlCmd.ExecuteNonQuery();
+
+                
+
+            }
+            catch(Exception e)
+            {
+                ErrorMessage += e.Message;
+                
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+        }
+        //It gets the next session id for the StartSession method and we can also use it to get the actual SessionId
+        public int GetSessionId()
+        {
+            int LastSessionId;
+
+            int NoRowsYet = 1;
+            int Error = -1;
+            string ErrorMessage = "The error messages is: ";
+
+            string sql = "SELECT session_id FROM session ORDER BY session_id DESC limit 1";
+
+            try
+            {
+                OpenConnection();
+
+                Adapter = new MySqlDataAdapter(sql,SqlConn);
+
+                Dt = new DataTable();
+
+                Adapter.Fill(Dt);
+                if (Dt.Rows.Count > 0)
+                {
+                    LastSessionId = Convert.ToInt32((Dt.Rows[0][0].ToString()));
+                    LastSessionId = LastSessionId + 1;
+                    return LastSessionId;
+
+                }
+                else
+                    return NoRowsYet;
+                
+            }
+            catch(Exception e)
+            {
+                ErrorMessage += e.Message;
+                return Error;
+
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+       
+
+
+        public void EndSession(int SessionId)
+        {
+            string ErrorMessage = "The error messages is: ";
+
+            string sql = "UPDATE session SET session_end = NOW() WHERE session_id = " + SessionId + " ";
+
+            try
+            {
+                OpenConnection();
+
+                SqlCmd = new MySqlCommand(sql, SqlConn);
+
+                SqlCmd.ExecuteNonQuery();
+
+            }
+            catch (Exception e)
+            {
+                ErrorMessage += e.Message;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+
     }
 
 
-    
-   
+
+
 }

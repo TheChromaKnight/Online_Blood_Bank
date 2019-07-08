@@ -17,7 +17,7 @@
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Text="User name:" Grid.Column="1" Padding="4"/>
+                <TextBlock Text="User name:" Grid.Column="1" Padding="4" FontWeight="Bold"/>
                 <TextBox Name ="TbUsername" Grid.Column="2" Padding="4"/>
 
             </Grid>
@@ -30,7 +30,7 @@
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Text="Password:" Grid.Column="1" Padding="4" Margin="0 15 0 15"/>
+                <TextBlock Text="Password:" Grid.Column="1" Padding="4" Margin="0 15 0 15" FontWeight="Bold"/>
                 <PasswordBox Name="PwdLogin" Grid.Column="2" Padding="4" Margin="0 15 0 15" />
 
             </Grid>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2019. Júl 03. 18:57
+-- Létrehozás ideje: 2019. Júl 08. 15:45
 -- Kiszolgáló verziója: 10.1.34-MariaDB
 -- PHP verzió: 7.2.7
 
@@ -134,6 +134,27 @@ INSERT INTO `rank` (`rank_id`, `rank_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Tábla szerkezet ehhez a táblához `session`
+--
+
+CREATE TABLE `session` (
+  `session_id` int(10) NOT NULL,
+  `session_start` timestamp NULL DEFAULT NULL,
+  `session_end` timestamp NULL DEFAULT NULL,
+  `session_user_id` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- A tábla adatainak kiíratása `session`
+--
+
+INSERT INTO `session` (`session_id`, `session_start`, `session_end`, `session_user_id`) VALUES
+(1, '2019-07-08 11:40:35', '2019-07-08 11:48:23', 5),
+(2, '2019-07-08 13:44:51', '2019-07-08 13:45:00', 5);
+
+-- --------------------------------------------------------
+
+--
 -- Tábla szerkezet ehhez a táblához `user`
 --
 
@@ -150,8 +171,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_name`, `user_password`, `user_rank_id`, `user_last_login`) VALUES
-(4, 'admin', 'admin123', 1, '2019-06-03'),
-(5, 'jozska', 'jozska123', 2, '2019-07-03'),
+(4, 'admin', 'admin123', 1, '2019-07-08'),
+(5, 'jozska', 'jozska123', 2, '2019-07-08'),
 (7, 'okok', 'okok123', 3, '2019-05-20');
 
 --
@@ -199,6 +220,13 @@ ALTER TABLE `office`
 --
 ALTER TABLE `rank`
   ADD PRIMARY KEY (`rank_id`);
+
+--
+-- A tábla indexei `session`
+--
+ALTER TABLE `session`
+  ADD PRIMARY KEY (`session_id`),
+  ADD KEY `session_user_id` (`session_user_id`);
 
 --
 -- A tábla indexei `user`
@@ -266,6 +294,12 @@ ALTER TABLE `blood_donation`
 --
 ALTER TABLE `member`
   ADD CONSTRAINT `member_ibfk_1` FOREIGN KEY (`member_user_id`) REFERENCES `user` (`user_id`);
+
+--
+-- Megkötések a táblához `session`
+--
+ALTER TABLE `session`
+  ADD CONSTRAINT `session_ibfk_1` FOREIGN KEY (`session_user_id`) REFERENCES `user` (`user_id`);
 
 --
 -- Megkötések a táblához `user`

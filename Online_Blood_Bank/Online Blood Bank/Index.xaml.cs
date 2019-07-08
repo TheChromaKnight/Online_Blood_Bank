@@ -25,11 +25,13 @@ namespace Online_Blood_Bank
     public partial class Index : Window
     {
         DatabaseMethods.Functions Db = new DatabaseMethods.Functions();
+        int SessionId;
 
         //We need to get the user id from LoginWin.xaml.cs, so we put an int into the constructor
-        public Index(int UserId)
+        public Index(int UserId, int SessionId)
         {
             InitializeComponent();
+            this.SessionId = SessionId;
 
             //Fill username and user rank fields
             TbIndexUserName.Text = Db.GetUserName(UserId);
@@ -42,10 +44,13 @@ namespace Online_Blood_Bank
         {
             this.DragMove();
         }
-
+        //Upper right corner X button 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Db.EndSession(SessionId);
+            MessageBox.Show(SessionId.ToString());
             this.Close();
+            
         }
         //Menu icon
         private void BtnImageMenuIcon_Click(object sender, RoutedEventArgs e)

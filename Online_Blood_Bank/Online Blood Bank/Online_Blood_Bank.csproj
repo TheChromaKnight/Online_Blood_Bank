@@ -131,38 +131,5 @@
   <ItemGroup>
     <Resource Include="Images\expand_fullscreen.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images - Copy\blood_bank_logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images - Copy\cross_platform.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images - Copy\expand_fullscreen.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images - Copy\github_logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images - Copy\home.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images - Copy\info.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images - Copy\menu_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images - Copy\new_user.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images - Copy\red_crescent.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images - Copy\red_cross.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images - Copy\users.png" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

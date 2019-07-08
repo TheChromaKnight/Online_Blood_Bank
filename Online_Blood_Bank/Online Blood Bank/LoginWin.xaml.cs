@@ -40,6 +40,8 @@ namespace Online_Blood_Bank
             string Name;
             string Password;
 
+            int SessionId;
+
             //Error variable to stop the program from progressing forward until every data is correct
            
             int Errors = 0;
@@ -70,6 +72,8 @@ namespace Online_Blood_Bank
                 //We cut out the extra white space characters with Trim()
                 Name = TbUsername.Text.Trim();
                 Password = PwdLogin.Password.Trim();
+
+                
                
                 
 
@@ -78,13 +82,22 @@ namespace Online_Blood_Bank
                     //Admin
                     if (Db.Login(Name, Password) == 1)
                     {
-                        
-                        
+             
                         UserId = Db.ReturnUserId();
+
                         Messages.SuccessfulLogin();
 
+                        SessionId = Db.GetSessionId();
+                        
+                        Db.StartSession(SessionId,  UserId);
+
                         //We have to create the new window here, otherwise it will not close itself upon closing this window
-                       
+                        Index indexwin = new Index(UserId, SessionId);
+                        indexwin.Show();
+
+
+                        
+
                         this.Close();
 
                         if(Db.LastLoginCalculator(UserId)==DatabaseError)
@@ -107,7 +120,15 @@ namespace Online_Blood_Bank
                         UserId = Db.ReturnUserId();
                        
                         Messages.SuccessfulLogin();
-                        Index indexwin = new Index(UserId);
+
+                        SessionId = Db.GetSessionId();
+
+                        Db.StartSession(SessionId, UserId);
+                       
+
+
+                        //We have to create the new window here, otherwise it will not close itself upon closing this window
+                        Index indexwin = new Index(UserId, SessionId);
                         indexwin.Show();
 
                         this.Close();
@@ -130,6 +151,16 @@ namespace Online_Blood_Bank
                         UserId = Db.ReturnUserId();
                        
                         Messages.SuccessfulLogin();
+                        
+                        SessionId = Db.GetSessionId();
+
+                     
+                        Db.StartSession(SessionId, UserId);
+                      
+
+                        //We have to create the new window here, otherwise it will not close itself upon closing this window
+                        Index indexwin = new Index(UserId, SessionId);
+                        indexwin.Show();
 
                         this.Close();
 
