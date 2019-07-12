@@ -131,5 +131,14 @@
   <ItemGroup>
     <Resource Include="Images\expand_fullscreen.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\plus_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\office.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\square.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

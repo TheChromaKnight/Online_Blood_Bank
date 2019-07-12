@@ -24,14 +24,13 @@ namespace Online_Blood_Bank
     {
         Functions Db = new Functions();
         public int UserId;
-       
+        
 
        
         public LoginWin()
         {
             InitializeComponent();
            
-            
         }
          
         //Login
@@ -41,6 +40,11 @@ namespace Online_Blood_Bank
             string Password;
 
             int SessionId;
+
+            int NoUserFound = 0;
+            int UserIsAdmin = 1;
+            int UserIsReceptionist = 2;
+            int UserIsMember = 3;
 
             //Error variable to stop the program from progressing forward until every data is correct
            
@@ -80,7 +84,7 @@ namespace Online_Blood_Bank
                 if (Password != "" && Name != "")
                 {
                     //Admin
-                    if (Db.Login(Name, Password) == 1)
+                    if (Db.Login(Name, Password) == UserIsAdmin)
                     {
              
                         UserId = Db.ReturnUserId();
@@ -92,7 +96,7 @@ namespace Online_Blood_Bank
                         Db.StartSession(SessionId,  UserId);
 
                         //We have to create the new window here, otherwise it will not close itself upon closing this window
-                        Index indexwin = new Index(UserId, SessionId);
+                        Index indexwin = new Index(UserId, SessionId, UserIsAdmin);
                         indexwin.Show();
 
 
@@ -114,7 +118,7 @@ namespace Online_Blood_Bank
                     }
                     
                     //Receptionist
-                    else if(Db.Login(Name, Password) == 2)
+                    else if(Db.Login(Name, Password) == UserIsReceptionist)
                     {
                        
                         UserId = Db.ReturnUserId();
@@ -128,7 +132,7 @@ namespace Online_Blood_Bank
 
 
                         //We have to create the new window here, otherwise it will not close itself upon closing this window
-                        Index indexwin = new Index(UserId, SessionId);
+                        Index indexwin = new Index(UserId, SessionId, UserIsReceptionist);
                         indexwin.Show();
 
                         this.Close();
@@ -146,7 +150,7 @@ namespace Online_Blood_Bank
 
                     }
                     //Member
-                    else if(Db.Login(Name, Password) == 3)
+                    else if(Db.Login(Name, Password) == UserIsMember)
                     {
                         UserId = Db.ReturnUserId();
                        
@@ -159,7 +163,7 @@ namespace Online_Blood_Bank
                       
 
                         //We have to create the new window here, otherwise it will not close itself upon closing this window
-                        Index indexwin = new Index(UserId, SessionId);
+                        Index indexwin = new Index(UserId, SessionId, UserIsMember);
                         indexwin.Show();
 
                         this.Close();
@@ -175,12 +179,13 @@ namespace Online_Blood_Bank
                         }
                     }
                     //No user found
-                    else if(Db.Login(Name, Password) == 0)
+                    else if(Db.Login(Name, Password) == NoUserFound)
                     {
                         Messages.WrongPasswordOrName();
                     }
                     //Connection error
-                    else if(Db.Login(Name,Password) == 0)
+                    //The same variable can be used for the connection error message
+                    else if(Db.Login(Name,Password) == NoUserFound)
                     {
                         Messages.ConnectionError();
 
