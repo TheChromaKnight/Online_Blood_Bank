@@ -1,12 +1,12 @@
-﻿<Window x:Class="Online_Blood_Bank.Index"
+﻿<Window x:Name="IndexWindow" x:Class="Online_Blood_Bank.Index"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Online_Blood_Bank"
         mc:Ignorable="d"
-        Title="Online Blood Bank" Height="650.376" Width="918.935" MinWidth="911" MinHeight="532" WindowStartupLocation="CenterScreen" WindowStyle="None" MaxWidth="1920" MaxHeight="1080">
-    <Grid Margin="0,-18,0,-8"  RenderTransformOrigin="0.515,0.53">
+        Title="Online Blood Bank" Height="650.376" Width="918.935" WindowStartupLocation="CenterScreen" MaxWidth="1920" MaxHeight="1080"  WindowStyle="None" MinWidth="918" MinHeight="650">
+    <Grid x:Name="IndexGrid" Margin="0,-18,0,-8"  RenderTransformOrigin="0.515,0.53">
         <Grid x:Name="GridMenu" Width="185" Background="#FFCEE3F6" HorizontalAlignment="Left" Margin="0,10,0,0" Panel.ZIndex="0">
             <TextBlock x:Name="TbIndexUserName" HorizontalAlignment="Left" Margin="5,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="26" Width="175" FontSize="14" TextDecorations="{x:Null}" FontWeight="Bold" TextAlignment="Center" FontStyle="Italic"><Run Text="U"/><Run Text="sername"/><LineBreak/><Run/></TextBlock>
 
@@ -20,15 +20,15 @@
             <Image x:Name="ImageMenuIcon"  Source="Images/menu_icon.png"/>
         </Button>
 
-        <Button x:Name="BtnMaximize" Content="O"  Margin="0,9,36,0" VerticalAlignment="Top" Height="50" Width="50" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="36" HorizontalAlignment="Right"  HorizontalContentAlignment="Center" Click="BtnMaximize_Click">
-            <!--<Image  x:Name="ImgMaximize" Source="Images/square.png" Height="50" Width="50"/> -->
-        </Button>
+       
+
+
 
 
         <!-- menubar on the left-->
-<!-- Use a textbox and an image property within the button to create a normal look for the mouse over -->
+        <!-- Use a textbox and an image property within the button to create a normal look for the mouse over -->
         <Button x:Name="BtnUsers" Content="Users" HorizontalAlignment="Left" Margin="2,317,0,0" VerticalAlignment="Top" Width="183" Height="51" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="18" FontWeight="Bold" IsEnabled="False"/>
-        <Image x:Name="ImgUsers" HorizontalAlignment="Left" Height="51" Margin="2,316,0,0" VerticalAlignment="Top" Width="56" Source="Images/users.png" Stretch="Fill" IsEnabled="False"/>
+        <Image x:Name="ImgUsers" HorizontalAlignment="Left" Height="47" Margin="2,319,0,0" VerticalAlignment="Top" Width="56" Source="Images/users.png" IsEnabled="False"/>
 
         <Button x:Name="BtnMyDonations" Content="        My donations" HorizontalAlignment="Left" Margin="0,142,0,0" VerticalAlignment="Top" Width="185" Height="51" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="18" FontWeight="Bold" IsEnabled="False"/>
         <Image x:Name="ImgMyDonations" HorizontalAlignment="Left" Height="51" Margin="2,143,0,0" VerticalAlignment="Top" Width="56" Source="Images/red_cross.png" IsEnabled="False"/>
@@ -50,6 +50,11 @@
 
         <Button x:Name="BtnNewDonation" Content="         New Donation" HorizontalAlignment="Left" Margin="0,554,0,62" Width="185" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="18" FontWeight="Bold" IsEnabled="False" Height="51" VerticalAlignment="Top"/>
         <Image x:Name="ImgNewDonation" HorizontalAlignment="Left" Height="51" Margin="2,555,0,0" VerticalAlignment="Top" Width="56" Source="Images/plus_logo.png" IsEnabled="False"/>
+
+        <Button x:Name="BtnDonations" Content="       Donations" HorizontalAlignment="Left" Margin="0,613,0,4" Width="185" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="18" FontWeight="Bold" IsEnabled="False" Height="51" VerticalAlignment="Top"/>
+        <Image x:Name="ImgDonations" HorizontalAlignment="Left" Height="51" Margin="2,612,0,0" VerticalAlignment="Top" Width="56" Source="Images/red_cross.png" IsEnabled="False"/>
+
+
         <!-- menubar on the left end-->
 
 
@@ -67,10 +72,10 @@
         </Grid>
 
 
-        <Button x:Name="BtnTodesktop" Content="-" Margin="0,8,78,0" VerticalAlignment="Top" Height="43" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="36" HorizontalAlignment="Right" Width="43" HorizontalContentAlignment="Center"/>
+        <Button x:Name="BtnMinimize" Content="-" Margin="0,8,78,0" VerticalAlignment="Top" Height="43" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="36" HorizontalAlignment="Right" Width="43" HorizontalContentAlignment="Center" Click="BtnMinimize_Click"/>
         <Button Content="X" Margin="0,9,0,0" VerticalAlignment="Top" Height="43" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="36" Click="Exit_Click" HorizontalAlignment="Right" Width="36"/>
-        <Button x:Name="BtnDonations" Content="       Donations" HorizontalAlignment="Left" Margin="0,613,0,4" Width="185" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="18" FontWeight="Bold" IsEnabled="False" Height="51" VerticalAlignment="Top"/>
-        <Image x:Name="ImgDonations" HorizontalAlignment="Left" Height="51" Margin="2,612,0,0" VerticalAlignment="Top" Width="56" Source="Images/red_cross.png" IsEnabled="False"/>
+        <Button x:Name="BtnNormalWindowState" Content="O" Margin="0,8,108,0" VerticalAlignment="Top" Height="43" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="36" HorizontalAlignment="Right" Width="43" HorizontalContentAlignment="Center" Click="BtnNormalWindowState_Click" IsEnabled="False"/>
+        <Button x:Name="BtnMaximize" Content="O"  Margin="0,9,36,0" VerticalAlignment="Top" Height="50" Width="50" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="36" HorizontalAlignment="Right"  HorizontalContentAlignment="Center" Click="BtnMaximize_Click"/>
 
 
 

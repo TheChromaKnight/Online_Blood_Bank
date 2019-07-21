@@ -43,6 +43,9 @@ namespace Online_Blood_Bank
 
             //MessageBox.Show(Convert.ToString(UserRank));
 
+            //On startup we hide the BtnNormalWindowState button
+            BtnNormalWindowState.Visibility = Visibility.Hidden;
+
             //Checking the user rank and showing appropriate menu points
 
             //admin
@@ -58,15 +61,17 @@ namespace Online_Blood_Bank
                 ImgUsers.Margin = new Thickness(2, 202, 0, 0);
                 ImgUsers.IsEnabled = true;
 
-                BtnNewOffice.Margin = new Thickness(0, 259, 0, 0);
+                BtnOffices.Margin = new Thickness(0, 259, 0, 0);
+                BtnOffices.IsEnabled = true;
+                ImgOffices.Margin = new Thickness(2, 259, 0, 0);
+                ImgOffices.IsEnabled = true;
+
+                BtnNewOffice.Margin = new Thickness(0, 317, 0, 0);
                 BtnNewOffice.IsEnabled = true;
-                ImgNewOffice.Margin = new Thickness(2, 259, 0, 0);
+                ImgNewOffice.Margin = new Thickness(2, 318, 0, 0);
                 ImgNewOffice.IsEnabled = true;
                 
-                BtnOffices.Margin = new Thickness(0, 317, 0, 0);
-                BtnOffices.IsEnabled = true;
-                ImgUsers.Margin = new Thickness(2, 317, 0, 0);
-                ImgUsers.IsEnabled = true;
+               
 
                 BtnSessions.Margin = new Thickness(0, 375, 0, 0);
                 BtnSessions.IsEnabled = true;
@@ -139,14 +144,14 @@ namespace Online_Blood_Bank
             //Member
             else if (UserRank == UserIsMember)
             {
-                BtnMyDonations.Margin = new Thickness(0, 133, 0, 0);
+                BtnMyDonations.Margin = new Thickness(0, 142, 0, 0);
                 BtnMyDonations.IsEnabled = true;
-                ImgMyDonations.Margin = new Thickness(2, 133, 0, 0);
+                ImgMyDonations.Margin = new Thickness(2, 142, 0, 0);
                 ImgMyDonations.IsEnabled = true;
 
-                BtnOffices.Margin = new Thickness(0, 186, 0, 0);
+                BtnOffices.Margin = new Thickness(0, 202, 0, 0);
                 BtnOffices.IsEnabled = true;
-                ImgOffices.Margin = new Thickness(2, 186, 0, 0);
+                ImgOffices.Margin = new Thickness(2, 202, 0, 0);
                 ImgOffices.IsEnabled = true;
 
                 BtnHelp.Visibility = Visibility.Hidden;
@@ -193,17 +198,38 @@ namespace Online_Blood_Bank
             
         }
 
-        //Upper right corner Maximize icon
+        //Upper right corner Maximize "icon"
         private void BtnMaximize_Click(object sender, RoutedEventArgs e)
         {
-           
+            IndexWindow.WindowState = WindowState.Maximized;
+
+            BtnMaximize.IsEnabled = false;
+            BtnMaximize.Visibility = Visibility.Hidden;
+
+            BtnNormalWindowState.Visibility = Visibility.Visible;
+            BtnNormalWindowState.IsEnabled = true;
+            BtnNormalWindowState.Margin = new Thickness(0, 6, 36, 0);
         }
 
-        //Upper right corner minimize icon
-        private void HideWindow_Click(object sender, RoutedEventArgs e)
+        //Upper right corner Normal windowstate icon (it's the same "icon" as the maximize because I couldn't find any transparent icons
+        private void BtnNormalWindowState_Click(object sender, RoutedEventArgs e)
         {
+            IndexWindow.WindowState = WindowState.Normal;
+            BtnMaximize.IsEnabled = true;
+            BtnMaximize.Visibility = Visibility.Visible;
+
+            BtnNormalWindowState.Visibility = Visibility.Hidden;
+            BtnNormalWindowState.IsEnabled = false;
+            BtnNormalWindowState.Margin = new Thickness(0, 8, 108, 0);
 
         }
+
+        //Upper right corner minimize "icon"
+        private void BtnMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            IndexWindow.WindowState = WindowState.Minimized;
+        }
+       
 
         //Menu icon
         private void BtnImageMenuIcon_Click(object sender, RoutedEventArgs e)
